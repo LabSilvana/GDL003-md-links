@@ -1,3 +1,1 @@
-const { mdLinks } = require('./index');
-
-mdLinks('./README.md');
+hola soy silvana

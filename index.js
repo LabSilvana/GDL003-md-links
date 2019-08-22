@@ -1,27 +1,27 @@
+const fs = require('fs');
 const path = require('path');
 
-const mdLinks = (filePath, options = { validate: false }) => {
-  if(checkAbsolute) {
-    if(checkMdFile(filePath)) {
-      console.log(__dirname);
-    }
-  }else {
-    if (checkMdFile(__dirname + filePath)) {
-      console.log(__dirname);
-    }
+//Verificar si un archivo existe
+fs.stat('/home/jafir/Laboratoria/GDL003-md-links/index.js', function(err) {
+  if (err == null) {
+    console.log("El archivo existe");
+  } else if (err.code == 'ENOENT') {
+    console.log("el archivo no existe");
+  } else {
+    console.log(err); // ocurrió algún error
   }
+})
+
+//Verificar si es archivo .md
+const filemd = (filePath) => {
+	return path.extname(filePath) === ".md";
 };
+console.log(filemd('./package.json'));
 
-const checkAbsolute = (filePath) => {
-  return path.isAbsolute(filePath);
-}
-
-const checkMdFile = (filePath) => {
-  if (path.extname(filePath) === '.md') {
-    return true;
-  }   
-  return false;
-}
-
-
-module.exports = {mdLinks, checkAbsolute, checkMdFile};
+//Leer un archivo
+fs.readFile('./test.js', function(err, data){
+  if(err){
+    console.log(err);
+  }
+  console.log(data.toString());
+})

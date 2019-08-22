@@ -1,6 +1,6 @@
-const {mdLinks, checkAbsolute, checkMdFile} = require('../');
+const {filePath} = require('../');
 
-describe('mdLinks', () => {
+describe('filePath', () => {
 
   it('should return true for a valid .md file', () => {
     expect(checkMdFile('../README.md')).toBe(true);
@@ -8,10 +8,5 @@ describe('mdLinks', () => {
 
   it('should return false for an invalid file', () => {
     expect(checkMdFile('../index.js')).toBe(false);
-  });
-
-  it('should check if path is absolute', () => {
-    expect(checkAbsolute('./index.js')).toBe(false);
-    expect(checkAbsolute('/index.js')).toBe(true);
   });
 });
