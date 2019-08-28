@@ -1,6 +1,6 @@
 const {filePath} = require('../');
 
-describe('filePath', () => {
+describe('Path', () => {
 
   it('should return true for a valid .md file', () => {
     expect(checkMdFile('../README.md')).toBe(true);

@@ -1,27 +1,38 @@
 const fs = require('fs');
 const path = require('path');
 
-//Verificar si un archivo existe
+//check if a file exists
 fs.stat('/home/jafir/Laboratoria/GDL003-md-links/index.js', function(err) {
   if (err == null) {
-    console.log("El archivo existe");
+    console.log("The file exists");
   } else if (err.code == 'ENOENT') {
-    console.log("el archivo no existe");
+    console.log("The file does not exists");
   } else {
     console.log(err); // ocurrió algún error
   }
 })
 
-//Verificar si es archivo .md
-const filemd = (filePath) => {
+//verify if a file is .md
+const fileMd = function (filePath) {
 	return path.extname(filePath) === ".md";
 };
-console.log(filemd('./package.json'));
+console.log(fileMd('./README.md'));
 
-//Leer un archivo
-fs.readFile('./test.js', function(err, data){
+//read a file
+fs.readFile('./package.json', function(err, data){
   if(err){
     console.log(err);
   }
   console.log(data.toString());
 })
+
+//read a directory
+fs.readdir(__dirname, (err, files) => {
+  if (err) {
+   console.error(err);
+  } else {
+   console.log('Files', files);   
+  }
+ });
+
+ 
